@@ -12,9 +12,8 @@ public class Owner {
 	public Owner() {
 	}
 
-	public Owner(String name, List<Apartment> apartments) {
+	public Owner(String name) {
 		this.name = name;
-		this.apartments = apartments;
 	}
 
 	public String getName() {
@@ -36,6 +35,8 @@ public class Owner {
 	public void removeApartments(Apartment apartment) {
 		apartments.remove(apartment);
 	}
+	
+	
 	
 
 }

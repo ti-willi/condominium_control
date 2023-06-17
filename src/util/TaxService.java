@@ -39,6 +39,16 @@ public class TaxService {
 
 	public void setDate(LocalDate date) {
 		this.date = date;
-	}	
+	}
+	
+	
+	public String toString() {
+		return service
+				+"\n"
+				+ serviceCost
+				+"\n"
+				+ date
+				+ "\n";
+	}
 
 }
