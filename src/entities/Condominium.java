@@ -91,17 +91,12 @@ public class Condominium {
 		Owner o3 = new Owner("Maria Green");
 		Owner o4 = new Owner("Anna White");
 		
-		apartments.add(new Apartment(101, 69.90, 2, 1, o1)); 
-		apartments.add(new Apartment(102, 63.49, 1, 1, o2)) ;
-		apartments.add(new Apartment(201, 69.90, 2, 1, o3));
-		apartments.add(new Apartment(202, 63.49, 1, 1, o2));
-		apartments.add(new Apartment(301, 62.44, 2, 1, o4)); 
-		apartments.add(new Apartment(302, 63.08, 1, 1, o4));
-		
-		for (Apartment ap : apartments) {
-			System.out.println(ap);
-			System.out.println();
-		}
+		apartments.add(new Apartment(101, 69.90, 2, 1, condominiumTaxPerApartment(), o1)); 
+		apartments.add(new Apartment(102, 63.49, 1, 1, condominiumTaxPerApartment(), o2)) ;
+		apartments.add(new Apartment(201, 69.90, 2, 1, condominiumTaxPerApartment(), o3));
+		apartments.add(new Apartment(202, 63.49, 1, 1, condominiumTaxPerApartment(), o2));
+		apartments.add(new Apartment(301, 62.44, 2, 1, condominiumTaxPerApartment(), o4)); 
+		apartments.add(new Apartment(302, 63.08, 1, 1, condominiumTaxPerApartment(), o4));		
 	}
 	
 	public void taxList() {
@@ -111,7 +106,7 @@ public class Condominium {
 	}
 	
 	public double condominiumTax() {
-		return fee /= quantityApartments;
+		return fee / quantityApartments;
 	}
 	
 	public double totalTaxesService() {
@@ -127,7 +122,7 @@ public class Condominium {
 		return totalTaxesService() / quantityApartments;
 	}
 	
-	public double condominiumTaxPerApartment() {
+	public Double condominiumTaxPerApartment() {
 		return condominiumTax() + taxesServicePerApartment();
 	}
 	
@@ -144,9 +139,12 @@ public class Condominium {
 		sb.append(convention);
 		sb.append("\nCondominium fee: ");
 		sb.append(fee);
-		sb.append("\n\nApartment data: ");
-		
-		
+		sb.append("\n\n");
+		addApartmentData();
+		for (Apartment ap : apartments) {
+			sb.append(ap);
+			sb.append("\n\n");
+		}
 		
 		return sb.toString();				
 	}

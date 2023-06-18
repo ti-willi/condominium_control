@@ -6,18 +6,20 @@ public class Apartment {
 	private Double squareMeters;
 	private Integer badrooms;
 	private Integer bathrooms;
+	private Double condominiumFee;
 	
 	private Owner owner;
 	
 	public Apartment() {
 	}
 
-	public Apartment(Integer number, Double squareMeters, Integer badrooms, Integer bathrooms, Owner owner) {
+	public Apartment(Integer number, Double squareMeters, Integer badrooms, Integer bathrooms, Double condominiumFee, Owner owner) {
 		this.number = number;
 		this.squareMeters = squareMeters;
 		this.badrooms = badrooms;
 		this.bathrooms = bathrooms;
 		this.owner = owner;
+		this.condominiumFee = condominiumFee;
 	}
 
 	public Integer getNumber() {
@@ -52,6 +54,14 @@ public class Apartment {
 		this.bathrooms = bathrooms;
 	}
 
+	public Double getCondominiumFee() {
+		return condominiumFee;
+	}
+
+	public void setCondominiumFee(Double condominiumFee) {
+		this.condominiumFee = condominiumFee;
+	}
+
 	public Owner getOwner() {
 		return owner;
 	}
@@ -70,7 +80,9 @@ public class Apartment {
 				+ "\nBadrooms: "
 				+ badrooms
 				+ "\nBathrooms: "
-				+ bathrooms;
+				+ bathrooms
+				+ "\nCondominium fee: "
+				+ condominiumFee;
 	}
 	
 	
