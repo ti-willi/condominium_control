@@ -11,7 +11,7 @@ public class Condominium {
 	private Integer quantityApartments;
 	private String apartmentManager;
 	private Integer convention;
-	private Double tax;
+	private Double fee;
 	
 	private List<TaxService> taxesService = new ArrayList<>();
 	private List<Apartment> apartments = new ArrayList<>();
@@ -19,12 +19,12 @@ public class Condominium {
 	public Condominium() {
 	}
 
-	public Condominium(String condominiumName, Integer quantityApartments, String apartmentManager, Integer convention, Double tax) {
+	public Condominium(String condominiumName, Integer quantityApartments, String apartmentManager, Integer convention, Double fee) {
 		this.condominiumName = condominiumName;
 		this.quantityApartments = quantityApartments;
 		this.apartmentManager = apartmentManager;
 		this.convention = convention;
-		this.tax = tax;
+		this.fee = fee;
 	}
 	
 	
@@ -61,12 +61,12 @@ public class Condominium {
 		this.convention = convention;
 	}
 
-	public Double getTax() {
-		return tax;
+	public Double getFee() {
+		return fee;
 	}
 
-	public void setTax(Double tax) {
-		this.tax = tax;
+	public void setFee(Double fee) {
+		this.fee = fee;
 	}
 	
 	public void addTaxes(TaxService taxes) {
@@ -97,6 +97,11 @@ public class Condominium {
 		apartments.add(new Apartment(202, 63.49, 1, 1, o2));
 		apartments.add(new Apartment(301, 62.44, 2, 1, o4)); 
 		apartments.add(new Apartment(302, 63.08, 1, 1, o4));
+		
+		for (Apartment ap : apartments) {
+			System.out.println(ap);
+			System.out.println();
+		}
 	}
 	
 	public void taxList() {
@@ -106,7 +111,7 @@ public class Condominium {
 	}
 	
 	public double condominiumTax() {
-		return tax /= quantityApartments;
+		return fee /= quantityApartments;
 	}
 	
 	public double totalTaxesService() {
@@ -127,15 +132,23 @@ public class Condominium {
 	}
 	
 	public String toString() {
-		return condominiumName
-				+ "\n"
-				+ quantityApartments
-				+ "\n"
-				+ apartmentManager
-				+ "\n"
-				+ convention
-				+ "\n"
-				+ tax;				
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("Condominium name: ");
+		sb.append(condominiumName);
+		sb.append("\nQuantity of apartments: ");
+		sb.append(quantityApartments);
+		sb.append("\nApartment manager: ");
+		sb.append(apartmentManager);
+		sb.append("\nConvention number: ");
+		sb.append(convention);
+		sb.append("\nCondominium fee: ");
+		sb.append(fee);
+		sb.append("\n\nApartment data: ");
+		
+		
+		
+		return sb.toString();				
 	}
 	
 	

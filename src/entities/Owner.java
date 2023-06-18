@@ -36,6 +36,10 @@ public class Owner {
 		apartments.remove(apartment);
 	}
 	
+	public String toString() {
+		return name;
+	}
+	
 	
 	
 

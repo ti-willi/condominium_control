@@ -40,6 +40,12 @@ public class Main {
 		System.out.println("Taxes service: ");
 		cond.taxList();
 		
+		System.out.println(cond);
+		System.out.println();
+		cond.addApartmentData();
+		
+		
+		
 		
 		
 		

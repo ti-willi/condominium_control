@@ -4,7 +4,7 @@ public class Apartment {
 	
 	private Integer number;
 	private Double squareMeters;
-	private Integer rooms;
+	private Integer badrooms;
 	private Integer bathrooms;
 	
 	private Owner owner;
@@ -12,10 +12,10 @@ public class Apartment {
 	public Apartment() {
 	}
 
-	public Apartment(Integer number, Double squareMeters, Integer rooms, Integer bathrooms, Owner owner) {
+	public Apartment(Integer number, Double squareMeters, Integer badrooms, Integer bathrooms, Owner owner) {
 		this.number = number;
 		this.squareMeters = squareMeters;
-		this.rooms = rooms;
+		this.badrooms = badrooms;
 		this.bathrooms = bathrooms;
 		this.owner = owner;
 	}
@@ -36,12 +36,12 @@ public class Apartment {
 		this.squareMeters = squareMeters;
 	}
 
-	public Integer getRooms() {
-		return rooms;
+	public Integer getBadrooms() {
+		return badrooms;
 	}
 
-	public void setRooms(Integer rooms) {
-		this.rooms = rooms;
+	public void setBadrooms(Integer rooms) {
+		this.badrooms = rooms;
 	}
 
 	public Integer getBathrooms() {
@@ -60,6 +60,18 @@ public class Apartment {
 		this.owner = owner;
 	}
 	
+	public String toString() {
+		return "Number: "
+				+ number
+				+ "\nOwner: "
+				+ owner
+				+ "\nSquare meters: "
+				+ squareMeters
+				+ "\nBadrooms: "
+				+ badrooms
+				+ "\nBathrooms: "
+				+ bathrooms;
+	}
 	
 	
 	
