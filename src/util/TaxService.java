@@ -41,7 +41,6 @@ public class TaxService {
 		this.date = date;
 	}
 	
-	
 	public String toString() {
 		return service
 				+"\n"

@@ -85,28 +85,32 @@ public class Condominium {
 		apartments.remove(apartment);
 	}
 	
-	public void addApartmentData() {		
+	public void addApartmentData() {
 		Owner o1 = new Owner("Alex Green");
 		Owner o2 = new Owner("Bob Brown");
 		Owner o3 = new Owner("Maria Green");
 		Owner o4 = new Owner("Anna White");
 		
-		apartments.add(new Apartment(101, 69.90, 2, 1, condominiumTaxPerApartment(), o1)); 
-		apartments.add(new Apartment(102, 63.49, 1, 1, condominiumTaxPerApartment(), o2)) ;
-		apartments.add(new Apartment(201, 69.90, 2, 1, condominiumTaxPerApartment(), o3));
-		apartments.add(new Apartment(202, 63.49, 1, 1, condominiumTaxPerApartment(), o2));
-		apartments.add(new Apartment(301, 62.44, 2, 1, condominiumTaxPerApartment(), o4)); 
-		apartments.add(new Apartment(302, 63.08, 1, 1, condominiumTaxPerApartment(), o4));		
+		apartments.add(new Apartment(101, 69.90, 2, 1, 0.0, o1)); 
+		apartments.add(new Apartment(102, 63.49, 1, 1, 0.0, o2)) ;
+		apartments.add(new Apartment(201, 69.90, 2, 1, 0.0, o3));
+		apartments.add(new Apartment(202, 63.49, 1, 1, 0.0, o2));
+		apartments.add(new Apartment(301, 62.44, 2, 1, 0.0, o4)); 
+		apartments.add(new Apartment(302, 63.08, 1, 1, 0.0, o4));
+		
+		calcCondominiumFee();
 	}
 	
-	public void taxList() {
-		for (TaxService ts : taxesService) {
-			System.out.println(ts);
+	public double totalSquareMeters() {
+		double sum = 0;
+		for (Apartment ap : apartments) {
+			sum += ap.getSquareMeters();
 		}
+		return sum;
 	}
 	
-	public double condominiumTax() {
-		return fee / quantityApartments;
+	public double condominiumFeePerSquareMeters() {
+		return fee / totalSquareMeters();
 	}
 	
 	public double totalTaxesService() {
@@ -118,17 +122,23 @@ public class Condominium {
 		return sum;
 	}
 	
-	public double taxesServicePerApartment() {
-		return totalTaxesService() / quantityApartments;
+	public double taxesServicePerSquareMeters() {
+		return totalTaxesService() / totalSquareMeters();
 	}
 	
-	public Double condominiumTaxPerApartment() {
-		return condominiumTax() + taxesServicePerApartment();
+	public void calcCondominiumFee() {
+		for (Apartment ap : apartments) {
+			ap.condominiumFee(this);
+		}
 	}
+	
 	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		
+		for (TaxService ts : taxesService) {
+			sb.append(ts + "\n");
+		}
 		sb.append("Condominium name: ");
 		sb.append(condominiumName);
 		sb.append("\nQuantity of apartments: ");
@@ -142,13 +152,10 @@ public class Condominium {
 		sb.append("\n\n");
 		addApartmentData();
 		for (Apartment ap : apartments) {
-			sb.append(ap);
-			sb.append("\n\n");
+			sb.append(ap + "\n\n");
 		}
 		
 		return sb.toString();				
 	}
-	
-	
 
 }

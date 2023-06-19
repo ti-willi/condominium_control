@@ -18,8 +18,8 @@ public class Apartment {
 		this.squareMeters = squareMeters;
 		this.badrooms = badrooms;
 		this.bathrooms = bathrooms;
-		this.owner = owner;
 		this.condominiumFee = condominiumFee;
+		this.owner = owner;
 	}
 
 	public Integer getNumber() {
@@ -70,6 +70,14 @@ public class Apartment {
 		this.owner = owner;
 	}
 	
+	public double apartmentTax(Condominium condominium) {
+		return condominium.taxesServicePerSquareMeters() * squareMeters;
+	}
+
+	public void condominiumFee(Condominium condominium) {
+		condominiumFee = squareMeters * condominium.condominiumFeePerSquareMeters() + apartmentTax(condominium);
+	}
+	
 	public String toString() {
 		return "Number: "
 				+ number
@@ -84,8 +92,5 @@ public class Apartment {
 				+ "\nCondominium fee: "
 				+ condominiumFee;
 	}
-	
-	
-	
 
 }

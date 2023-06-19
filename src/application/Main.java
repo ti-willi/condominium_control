@@ -38,7 +38,7 @@ public class Main {
 		}
 		
 		System.out.println("Taxes service: ");
-		cond.taxList();
+		
 		System.out.println();
 		System.out.println(cond);
 		
