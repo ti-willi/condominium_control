@@ -6,7 +6,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 import entities.Condominium;
-import util.TaxService;
+import services.ServiceFee;
 
 public class Main {
 
@@ -33,8 +33,8 @@ public class Main {
 			LocalDate date = LocalDate.parse(sc.next(), dtf);
 			System.out.print("Type 'y' to continue or 'end' to exit: ");
 			validated = sc.next().charAt(0);
-			TaxService ts = new TaxService(service, serviceCost, date);
-			cond.addTaxes(ts);
+			ServiceFee sf = new ServiceFee(service, serviceCost, date);
+			cond.addTaxes(sf);
 		}
 		
 		System.out.println("Taxes service: ");

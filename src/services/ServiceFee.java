@@ -1,17 +1,17 @@
-package util;
+package services;
 
 import java.time.LocalDate;
 
-public class TaxService {
-	
+public class ServiceFee {
+
 	private String service;
 	private Double serviceCost;
 	private LocalDate date;
 	
-	public TaxService() {
+	public ServiceFee() {
 	}
 
-	public TaxService(String service, Double serviceCost, LocalDate date) {
+	public ServiceFee(String service, Double serviceCost, LocalDate date) {
 		this.service = service;
 		this.serviceCost = serviceCost;
 		this.date = date;
@@ -49,5 +49,5 @@ public class TaxService {
 				+ date
 				+ "\n";
 	}
-
+	
 }

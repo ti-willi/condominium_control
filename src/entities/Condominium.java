@@ -3,7 +3,7 @@ package entities;
 import java.util.ArrayList;
 import java.util.List;
 
-import util.TaxService;
+import services.ServiceFee;
 
 public class Condominium {
 	
@@ -13,7 +13,7 @@ public class Condominium {
 	private Integer convention;
 	private Double fee;
 	
-	private List<TaxService> taxesService = new ArrayList<>();
+	private List<ServiceFee> services = new ArrayList<>();
 	private List<Apartment> apartments = new ArrayList<>();
 	
 	public Condominium() {
@@ -69,12 +69,12 @@ public class Condominium {
 		this.fee = fee;
 	}
 	
-	public void addTaxes(TaxService taxes) {
-		taxesService.add(taxes);
+	public void addTaxes(ServiceFee taxes) {
+		services.add(taxes);
 	}
 	
-	public void removeTaxes(TaxService taxes) {
-		taxesService.remove(taxes);
+	public void removeTaxes(ServiceFee taxes) {
+		services.remove(taxes);
 	}
 	
 	public void addApartments(Apartment apartment) {
@@ -116,8 +116,8 @@ public class Condominium {
 	public double totalTaxesService() {
 		double sum = 0;
 		
-		for (TaxService ts : taxesService) {
-			sum += ts.getServiceCost();
+		for (ServiceFee sf : services) {
+			sum += sf.getServiceCost();
 		}
 		return sum;
 	}
@@ -136,8 +136,8 @@ public class Condominium {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		
-		for (TaxService ts : taxesService) {
-			sb.append(ts + "\n");
+		for (ServiceFee sf : services) {
+			sb.append(sf + "\n");
 		}
 		sb.append("Condominium name: ");
 		sb.append(condominiumName);
