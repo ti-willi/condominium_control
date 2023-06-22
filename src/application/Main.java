@@ -6,6 +6,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 import entities.Condominium;
+import exceptions.ServiceException;
 import services.ServiceFee;
 
 public class Main {
@@ -23,18 +24,26 @@ public class Main {
 		System.out.print("Is there any extra service (y/n)? ");
 		char validated = sc.next().charAt(0);
 		
+		
 		while (validated == 'y') {
-			System.out.print("Service: ");
-			sc.nextLine();
-			String service = sc.nextLine();
-			System.out.print("Service cost: ");
-			double serviceCost = sc.nextDouble();
-			System.out.print("Service date (dd/mm/yyyy) :");
-			LocalDate date = LocalDate.parse(sc.next(), dtf);
-			System.out.print("Type 'y' to continue or 'end' to exit: ");
-			validated = sc.next().charAt(0);
-			ServiceFee serviceFee = new ServiceFee(service, serviceCost, date);
-			cond.addTaxes(serviceFee);
+			try {
+				System.out.print("Service: ");
+				sc.nextLine();
+				String service = sc.nextLine();
+				System.out.print("Service cost: ");
+				double serviceCost = sc.nextDouble();
+				System.out.print("Service date (dd/mm/yyyy) :");
+				LocalDate date = LocalDate.parse(sc.next(), dtf);
+				System.out.print("Type 'y' to continue or 'end' to exit: ");
+				validated = sc.next().charAt(0);
+				ServiceFee serviceFee = new ServiceFee(service, serviceCost, date);
+				cond.addTaxes(serviceFee);
+			}
+			catch (RuntimeException e) {
+				System.out.println();
+				System.out.println("Invalid data, try again!");
+				System.out.println();
+			}
 		}
 		
 		System.out.println();
