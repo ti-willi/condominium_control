@@ -20,7 +20,7 @@ public class Main {
 		Condominium cond = new Condominium("Cond of cond", 6, "Alex Green", 1827986, 2000.00);
 		
 		System.out.println("Condominium services: ");
-		System.out.print("Type 'y' to continue or 'end' to exit: ");
+		System.out.print("Is there any extra service (y/n)? ");
 		char validated = sc.next().charAt(0);
 		
 		while (validated == 'y') {
@@ -33,26 +33,12 @@ public class Main {
 			LocalDate date = LocalDate.parse(sc.next(), dtf);
 			System.out.print("Type 'y' to continue or 'end' to exit: ");
 			validated = sc.next().charAt(0);
-			ServiceFee sf = new ServiceFee(service, serviceCost, date);
-			cond.addTaxes(sf);
+			ServiceFee serviceFee = new ServiceFee(service, serviceCost, date);
+			cond.addTaxes(serviceFee);
 		}
-		
-		System.out.println("Taxes service: ");
 		
 		System.out.println();
 		System.out.println(cond);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		sc.close();
 

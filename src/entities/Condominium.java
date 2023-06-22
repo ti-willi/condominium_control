@@ -136,9 +136,6 @@ public class Condominium {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		
-		for (ServiceFee sf : services) {
-			sb.append(sf + "\n");
-		}
 		sb.append("Condominium name: ");
 		sb.append(condominiumName);
 		sb.append("\nQuantity of apartments: ");
@@ -151,10 +148,18 @@ public class Condominium {
 		sb.append(fee);
 		sb.append("\n\n");
 		addApartmentData();
+		
+		if (services.size() > 0) {
+			sb.append("Services fee:");
+			sb.append("\n");
+			for (ServiceFee sf : services) {
+				sb.append(sf + "\n");
+			}
+		}
+		
 		for (Apartment ap : apartments) {
 			sb.append(ap + "\n\n");
 		}
-		
 		return sb.toString();				
 	}
 
