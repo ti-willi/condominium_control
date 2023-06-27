@@ -1,5 +1,6 @@
 package entities;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,8 +28,6 @@ public class Condominium {
 		this.fee = fee;
 	}
 	
-	
-
 	public String getCondominiumName() {
 		return condominiumName;
 	}
@@ -91,14 +90,16 @@ public class Condominium {
 		Owner o3 = new Owner("Maria Green");
 		Owner o4 = new Owner("Anna White");
 		
-		apartments.add(new Apartment(101, 69.90, 2, 1, 0.0, o1)); 
-		apartments.add(new Apartment(102, 63.49, 1, 1, 0.0, o2)) ;
-		apartments.add(new Apartment(201, 69.90, 2, 1, 0.0, o3));
-		apartments.add(new Apartment(202, 63.49, 1, 1, 0.0, o2));
-		apartments.add(new Apartment(301, 62.44, 2, 1, 0.0, o4)); 
-		apartments.add(new Apartment(302, 63.08, 1, 1, 0.0, o4));
+		apartments.add(new Apartment(101, 69.90, 2, 1, 0.0, 0.0, 0.0, Instant.now(), o1)); 
+		apartments.add(new Apartment(102, 63.49, 1, 1, 0.0, 0.0, 0.0, Instant.now(), o2)) ;
+		apartments.add(new Apartment(201, 69.90, 2, 1, 0.0, 0.0, 0.0, Instant.now(), o3));
+		apartments.add(new Apartment(202, 63.49, 1, 1, 0.0, 0.0, 0.0, Instant.now(), o2));
+		apartments.add(new Apartment(301, 62.44, 2, 1, 0.0, 0.0, 0.0, Instant.now(), o4)); 
+		apartments.add(new Apartment(302, 63.08, 1, 1, 0.0, 0.0, 0.0, Instant.now(), o4));
 		
 		calcCondominiumFee();
+		calcServiceFee();
+		calcCondominiumFeeAndServiceFee();
 	}
 	
 	public double totalSquareMeters() {
@@ -113,7 +114,7 @@ public class Condominium {
 		return fee / totalSquareMeters();
 	}
 	
-	public double totalTaxesService() {
+	public double totalServiceFee() {
 		double sum = 0;
 		
 		for (ServiceFee sf : services) {
@@ -122,8 +123,8 @@ public class Condominium {
 		return sum;
 	}
 	
-	public double taxesServicePerSquareMeters() {
-		return totalTaxesService() / totalSquareMeters();
+	public double ServiceFeePerSquareMeters() {
+		return totalServiceFee() / totalSquareMeters();
 	}
 	
 	public void calcCondominiumFee() {
@@ -132,34 +133,40 @@ public class Condominium {
 		}
 	}
 	
+	public void calcServiceFee() {
+		for (Apartment ap : apartments) {
+			ap.apartmentServiceFee(this);
+		}
+	}
+	
+	public void calcCondominiumFeeAndServiceFee() {
+		for (Apartment ap : apartments) {
+			ap.totalCondominiumFeeAndServiceFee(this);
+		}
+	}
 	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		
-		sb.append("Condominium name: ");
-		sb.append(condominiumName);
-		sb.append("\nQuantity of apartments: ");
-		sb.append(quantityApartments);
-		sb.append("\nApartment manager: ");
-		sb.append(apartmentManager);
-		sb.append("\nConvention number: ");
-		sb.append(convention);
-		sb.append("\nCondominium fee: ");
-		sb.append(fee);
-		sb.append("\n\n");
+		sb.append("Condominium name: " + condominiumName);
+		sb.append("\nQuantity of apartments: " + quantityApartments);
+		sb.append("\nApartment manager: " + apartmentManager);
+		sb.append("\nConvention number: " + convention);
+		sb.append("\nCondominium fee: " + String.format("%.2f", fee) + "\n\n");
 		addApartmentData();
 		
 		if (services.size() > 0) {
-			sb.append("Services fee:");
-			sb.append("\n");
+			sb.append("Services fee:\n\n");
 			for (ServiceFee sf : services) {
 				sb.append(sf + "\n");
 			}
+			sb.append("Total service fee: " + String.format("%.2f", totalServiceFee()) + "\n\n");
 		}
 		
 		for (Apartment ap : apartments) {
 			sb.append(ap + "\n\n");
 		}
+		
 		return sb.toString();				
 	}
 
