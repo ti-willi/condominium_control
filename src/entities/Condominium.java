@@ -1,6 +1,5 @@
 package entities;
 
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -90,12 +89,12 @@ public class Condominium {
 		Owner o3 = new Owner("Maria Green");
 		Owner o4 = new Owner("Anna White");
 		
-		apartments.add(new Apartment(101, 69.90, 2, 1, 0.0, 0.0, 0.0, Instant.now(), o1)); 
-		apartments.add(new Apartment(102, 63.49, 1, 1, 0.0, 0.0, 0.0, Instant.now(), o2)) ;
-		apartments.add(new Apartment(201, 69.90, 2, 1, 0.0, 0.0, 0.0, Instant.now(), o3));
-		apartments.add(new Apartment(202, 63.49, 1, 1, 0.0, 0.0, 0.0, Instant.now(), o2));
-		apartments.add(new Apartment(301, 62.44, 2, 1, 0.0, 0.0, 0.0, Instant.now(), o4)); 
-		apartments.add(new Apartment(302, 63.08, 1, 1, 0.0, 0.0, 0.0, Instant.now(), o4));
+		apartments.add(new Apartment(101, 69.90, 2, 1, o1)); 
+		apartments.add(new Apartment(102, 63.49, 1, 1, o2)) ;
+		apartments.add(new Apartment(201, 69.90, 2, 1, o3));
+		apartments.add(new Apartment(202, 63.49, 1, 1, o2));
+		apartments.add(new Apartment(301, 62.44, 2, 1, o4)); 
+		apartments.add(new Apartment(302, 63.08, 1, 1, o4));
 		
 		calcCondominiumFee();
 		calcServiceFee();

@@ -13,7 +13,7 @@ public class Apartment {
 	private Double condominiumFee;
 	private Double serviceFee;
 	private Double amount;
-	private Instant instant;
+
 	
 	private Owner owner;
 	
@@ -22,7 +22,7 @@ public class Apartment {
 	public Apartment() {
 	}
 
-	public Apartment(Integer number, Double squareMeters, Integer badrooms, Integer bathrooms, Double condominiumFee, Double serviceFee, Double amount, Instant instant, Owner owner) {
+	public Apartment(Integer number, Double squareMeters, Integer badrooms, Integer bathrooms, Double condominiumFee, Double serviceFee, Double amount, Owner owner) {
 		this.number = number;
 		this.squareMeters = squareMeters;
 		this.badrooms = badrooms;
@@ -30,7 +30,14 @@ public class Apartment {
 		this.condominiumFee = condominiumFee;
 		this.serviceFee = serviceFee;
 		this.amount = amount;
-		this.instant = instant;
+		this.owner = owner;
+	}
+
+	public Apartment(Integer number, Double squareMeters, Integer badrooms, Integer bathrooms, Owner owner) {
+		this.number = number;
+		this.squareMeters = squareMeters;
+		this.badrooms = badrooms;
+		this.bathrooms = bathrooms;
 		this.owner = owner;
 	}
 
@@ -90,14 +97,6 @@ public class Apartment {
 		this.amount = amount;
 	}
 
-	public Instant getInstant() {
-		return instant;
-	}
-
-	public void setInstant(Instant instant) {
-		this.instant = instant;
-	}
-
 	public Owner getOwner() {
 		return owner;
 	}
@@ -129,7 +128,7 @@ public class Apartment {
 		sb.append("\nCondominium fee: " + String.format("%.2f", condominiumFee));
 		sb.append("\nService fee: " + String.format("%.2f", serviceFee));
 		sb.append("\nAmount: " + String.format("%.2f", amount));
-		sb.append("\nDate: " + dtf.format(instant));
+		sb.append("\nDate: " + dtf.format(Instant.now()));
 		
 		return sb.toString();	
 	}
