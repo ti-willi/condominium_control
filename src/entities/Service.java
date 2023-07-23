@@ -1,22 +1,22 @@
-package services;
+package entities;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class ServiceFee {
-
+public class Service {
+	
 	private String service;
-	private Double serviceCost;
+	private Double serviceFee;
 	private LocalDate date;
 	
 	private static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	
-	public ServiceFee() {
+	public Service() {
 	}
 
-	public ServiceFee(String service, Double serviceCost, LocalDate date) {
+	public Service(String service, Double serviceFee, LocalDate date) {
 		this.service = service;
-		this.serviceCost = serviceCost;
+		this.serviceFee = serviceFee;
 		this.date = date;
 	}
 
@@ -28,12 +28,12 @@ public class ServiceFee {
 		this.service = service;
 	}
 
-	public Double getServiceCost() {
-		return serviceCost;
+	public Double getserviceFee() {
+		return serviceFee;
 	}
 
-	public void setServiceCost(Double serviceCost) {
-		this.serviceCost = serviceCost;
+	public void setserviceFee(Double serviceFee) {
+		this.serviceFee = serviceFee;
 	}
 
 	public LocalDate getDate() {
@@ -43,15 +43,15 @@ public class ServiceFee {
 	public void setDate(LocalDate date) {
 		this.date = date;
 	}
-	
+
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		
 		sb.append("Service: " + service);
-		sb.append("\nService cost: " + String.format("%.2f", serviceCost));
+		sb.append("\nService cost: " + String.format("%.2f", serviceFee));
 		sb.append("\nService date: " + dtf.format(date) + "\n");
 		
 		return sb.toString();
 	}
-	
+
 }

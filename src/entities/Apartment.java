@@ -14,7 +14,6 @@ public class Apartment {
 	private Double serviceFee;
 	private Double amount;
 
-	
 	private Owner owner;
 	
 	private static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss").withZone(ZoneId.systemDefault());
@@ -84,6 +83,10 @@ public class Apartment {
 	public Double getServiceFee() {
 		return serviceFee;
 	}
+	
+	public void setServiceFee(Double serviceFee) {
+		this.serviceFee = serviceFee;
+	}
 
 	public void Double(Double serviceFee) {
 		this.serviceFee = serviceFee;
@@ -103,18 +106,6 @@ public class Apartment {
 
 	public void setOwner(Owner owner) {
 		this.owner = owner;
-	}
-		
-	public void condominiumFee(Condominium cond) {
-		condominiumFee = squareMeters * cond.condominiumFeePerSquareMeters();
-	}
-	
-	public void apartmentServiceFee(Condominium cond) {
-		serviceFee = cond.ServiceFeePerSquareMeters() * squareMeters;
-	}
-
-	public void totalCondominiumFeeAndServiceFee(Condominium cond) {
-		amount = squareMeters * cond.condominiumFeePerSquareMeters() + serviceFee;
 	}
 	
 	public String toString() {
